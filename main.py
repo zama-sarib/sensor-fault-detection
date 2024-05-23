@@ -1,6 +1,6 @@
-from sensor.data_access.sensor_data import SensorData
-from sensor.constant.env_variable import MONGODB_URL_KEY
+from sensor.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig
 import os
 
-obj = SensorData()
-# print(os.getenv(MONGODB_URL_KEY))
+training_pipeline_config = TrainingPipelineConfig()
+data_ingestion_config = DataIngestionConfig(training_pipeline_config=training_pipeline_config)
+print(data_ingestion_config.__dict__)
