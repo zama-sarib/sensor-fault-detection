@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 artifact/*
 test.ipynb
+saved_models/*
 # C extensions
 *.so
 
