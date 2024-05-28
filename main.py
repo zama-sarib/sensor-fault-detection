@@ -60,7 +60,7 @@ async def predict_route():
     try:
         #get data from user csv file
         #conver csv file to dataframe
-        test_df_path = os.path.join(os.getcwd(),ARTIFACT_DIR,max(os.listdir(ARTIFACT_DIR)),DATA_INGESTION_DIR_NAME,DATA_INGESTION_INGESTED_DIR,'test.csv')
+        test_df_path = os.path.join(ARTIFACT_DIR,max(os.listdir(ARTIFACT_DIR)),DATA_INGESTION_DIR_NAME,DATA_INGESTION_INGESTED_DIR,'test.csv')
         test_df = pd.read_csv(test_df_path)
         y_true = test_df[[TARGET_COLUMN]]
         test_df = test_df.drop([TARGET_COLUMN],axis=1)
