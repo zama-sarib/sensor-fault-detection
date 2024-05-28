@@ -1,5 +1,5 @@
 from distutils import dir_util
-from sensor.constant.training_pipeline import SCHEMA_FILE_PATH
+from sensor.constant.training_pipeline import SCHEMA_FILE_PATH,DATA_VALIDATION_DRIFT_REPORT_FILE_NAME
 from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 from sensor.entity.config_entity import DataValidationConfig
 from sensor.exception import SensorException
@@ -8,6 +8,7 @@ from sensor.utils.main_utils import read_yaml_file,write_yaml_file
 from scipy.stats import ks_2samp
 import pandas as pd
 import os,sys
+import shutil
 class DataValidation:
 
     def __init__(self,data_ingestion_artifact:DataIngestionArtifact,
@@ -84,6 +85,7 @@ class DataValidation:
             dir_path = os.path.dirname(drift_report_file_path)
             os.makedirs(dir_path,exist_ok=True)
             write_yaml_file(file_path=drift_report_file_path,content=report,)
+            shutil.copy(src=drift_report_file_path,dst=DATA_VALIDATION_DRIFT_REPORT_FILE_NAME)
             return status
         except Exception as e:
             raise SensorException(e,sys)
