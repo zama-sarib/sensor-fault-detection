@@ -2,7 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+artifact/*
+saved_models/*
+test.ipynb
+saved_models/*
 # C extensions
 *.so
 
